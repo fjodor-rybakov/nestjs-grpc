@@ -1,0 +1,5 @@
+.idea
+hero/dist
+hero/node_modules
+gateway/node_modules
+gateway/dist
