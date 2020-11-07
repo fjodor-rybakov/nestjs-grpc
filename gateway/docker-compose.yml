@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  gateway-service:
+    container_name: gateway-service
+    build: .
+    ports:
+      - ${EXTERNAL_PORT:-6000}:${INTERNAL_PORT:-3000}
+    volumes:
+      - ./proto:/proto
+    networks:
+      - grpc_network
+
+networks:
+  grpc_network:
+    external: true

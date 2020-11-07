@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  hero-service:
+    container_name: hero-service
+    build: .
+    volumes:
+      - ./proto:/proto
+    networks:
+      - grpc_network
+
+networks:
+  grpc_network:
+    external: true

@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
@@ -9,8 +9,8 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: 'hero',
-      protoPath: join(resolve(process.cwd(), '..'), 'proto/hero.proto'),
-      loader: {},
+      protoPath: join(process.cwd(), 'proto/hero.proto'),
+      url: '0.0.0.0:5000',
     },
   });
   const logger = new Logger(bootstrap.name);

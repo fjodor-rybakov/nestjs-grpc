@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { HeroController } from './hero.controller';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { HeroService } from './hero.service';
 
 @Module({
@@ -12,7 +12,8 @@ import { HeroService } from './hero.service';
         transport: Transport.GRPC,
         options: {
           package: 'hero',
-          protoPath: join(resolve(process.cwd(), '..'), 'proto/hero.proto'),
+          protoPath: join(process.cwd(), 'proto/hero.proto'),
+          url: 'hero-service:5000',
         },
       },
     ]),
